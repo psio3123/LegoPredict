@@ -43,7 +43,7 @@ model.add(vgg_conv)
 model.add(layers.Flatten())
 model.add(layers.Dense(1024, activation='relu'))
 model.add(layers.Dropout(0.5))
-model.add(layers.Dense(7, activation='softmax'))
+model.add(layers.Dense(9, activation='softmax'))
 
 # Show a summary of the model. Check the number of trainable parameters
 model.summary()
