@@ -18,9 +18,6 @@ from keras.preprocessing.image import ImageDataGenerator, load_img
 inception_model = inception_v3.InceptionV3(weights="imagenet")
 
 
-def read_model():
-
-
 def show_results():
     # Show the results
     for i in range(len(predicted_classes)):
@@ -142,6 +139,7 @@ def mobilenet():
     # ---------------------------------------------------------------------------------------------
     # My Trained Model MobileNet- Single Image
     # ---------------------------------------------------------------------------------------------
+    print("------------------------   Mobilenet    ----------------------------------------")
     print("")
     print("My Model - 1x5LGreen ")
     predict_mymodel(file_3x5LGreen)
@@ -159,6 +157,15 @@ def mobilenet():
     print("Inception - Sunflower")
     predict_mymodel(file_sunflower)
 
+
+def vgg16():
+    # ---------------------------------------------------------------------------------------------
+    # My Trained Model MobileNet- Single Image
+    # ---------------------------------------------------------------------------------------------
+    print("------------------------   VGG16    ----------------------------------------")
+    print("VGG16 - 1x5LGreen ")
+    predict_vgg16(file_3x5LGreen)
+
 def resnet50():
     # ---------------------------------------------------------------------------------------------
     # My Trained Model MobileNet- Single Image
@@ -172,7 +179,7 @@ if __name__ == '__main__':
     print("reading model...")
 
     mobilenet_model = load_model('./models/LegoTrainedMobilenet.h5')
-    #vgg16_model = load_model('./models/LegoTrainedVGG16_epochs10.h5')
+    vgg16_model = load_model('./models/LegoTrainedVGG16_epochs10.h5')
     resnet50_model = load_model('./models/resnet50_lego_01.h5')
 
     ende = time.time()
@@ -191,7 +198,8 @@ if __name__ == '__main__':
 
     file_daisy = "./lego_fotos/train/daisy/1031799732_e7f4008c03.jpg"
 
-    resnet50()
+    mobilenet()
+    vgg16()
 
 
 
