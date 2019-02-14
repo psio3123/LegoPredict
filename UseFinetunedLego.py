@@ -85,9 +85,12 @@ def predict_mymodel(img_path):
     print('{:5.3f}s'.format(ende - start))
     y_classes = predictions_my.argmax(axis=-1)
     print('Best Match', y_classes)
+    print('Best Match', y_classes[0])
+    print(labels)
+    print('Best Match',  labels[y_classes[0]])
 
 def predict_vgg16(img_path):
-    img = image.load_img(img_path, target_size=(244, 244))
+    img = image.load_img(img_path, target_size=(224, 224))
     img_tensor = image.img_to_array(img)  # (height, width, channels)
     img_tensor = np.expand_dims(img_tensor,axis=0)  # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
     img_tensor /= 255.  # imshow expects values in the range [0, 1]
@@ -100,7 +103,7 @@ def predict_vgg16(img_path):
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
     y_classes = predictions_my.argmax(axis=-1)
-    print('Best Match', y_classes)
+
 
 def predict_resnet50(img_path):
     img = image.load_img(img_path, target_size=(244, 244))
@@ -116,10 +119,11 @@ def predict_resnet50(img_path):
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
     y_classes = predictions_my.argmax(axis=-1)
-    print('Best Match', y_classes)
+
 
 
 def inception():
+    print("------------------------   Inception Orignal    ----------------------------------------")
     # print("Inception - Lego 1x4LRed ")
     # predict_inception_v3( file_1x4LRed )
     print("")
@@ -139,7 +143,7 @@ def mobilenet():
     # ---------------------------------------------------------------------------------------------
     # My Trained Model MobileNet- Single Image
     # ---------------------------------------------------------------------------------------------
-    print("------------------------   Mobilenet    ----------------------------------------")
+    print("------------------------   Mobilenet  Trained  ----------------------------------------")
     print("")
     print("My Model - 1x5LGreen ")
     predict_mymodel(file_3x5LGreen)
@@ -162,9 +166,25 @@ def vgg16():
     # ---------------------------------------------------------------------------------------------
     # My Trained Model MobileNet- Single Image
     # ---------------------------------------------------------------------------------------------
-    print("------------------------   VGG16    ----------------------------------------")
-    print("VGG16 - 1x5LGreen ")
+    print("------------------------   VGG16  Trained  ----------------------------------------")
+    print("1x5LGreen ")
     predict_vgg16(file_3x5LGreen)
+    print("")
+    print("1x4LRed ")
+    predict_vgg16(file_1x4LRed)
+    print("")
+    print("Rose ")
+    predict__vgg16(file_rose)
+    print("")
+    print("")
+    print("Apple ")
+    predict__vgg16(file_apple)
+    print("")
+    print("Sunflower")
+    predict_vgg16(file_sunflower)
+
+
+
 
 def resnet50():
     # ---------------------------------------------------------------------------------------------
@@ -176,11 +196,12 @@ def resnet50():
 
 if __name__ == '__main__':
     start = time.time()
+    labels = {0: '1x4LBlack', 1: '1x4LRed', 2: '3x5LBlack', 3: '3x5LGray', 4: '3x5LGreen', 5: '3x5LRed', 6: 'Gear20Beige', 7: 'Pin3Blue', 8: 'PinBlack', 9: 'daisy', 10: 'dandelion', 11: 'roses', 12: 'sunflowers', 13: 'tulips'}
     print("reading model...")
 
     mobilenet_model = load_model('./models/LegoTrainedMobilenet.h5')
     vgg16_model = load_model('./models/LegoTrainedVGG16_epochs10.h5')
-    resnet50_model = load_model('./models/resnet50_lego_01.h5')
+    #resnet50_model = load_model('./models/resnet50_lego_01.h5')
 
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
