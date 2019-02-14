@@ -84,10 +84,7 @@ def predict_mymodel(img_path):
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
     y_classes = predictions_my.argmax(axis=-1)
-    print('Best Match', y_classes)
-    print('Best Match', y_classes[0])
-    print(labels)
-    print('Best Match',  labels[y_classes[0]])
+    print('Best Match', labels[y_classes[0]], predictions_my[0, y_classes[0]])
 
 def predict_vgg16(img_path):
     img = image.load_img(img_path, target_size=(224, 224))
@@ -103,6 +100,7 @@ def predict_vgg16(img_path):
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
     y_classes = predictions_my.argmax(axis=-1)
+    print('Best Match', labels[y_classes[0]],predictions_my[0,y_classes[0]])
 
 
 def predict_resnet50(img_path):
@@ -173,12 +171,12 @@ def vgg16():
     print("1x4LRed ")
     predict_vgg16(file_1x4LRed)
     print("")
-    print("Rose ")
-    predict__vgg16(file_rose)
+    print("Rose")
+    predict_vgg16(file_rose)
     print("")
     print("")
     print("Apple ")
-    predict__vgg16(file_apple)
+    predict_vgg16(file_apple)
     print("")
     print("Sunflower")
     predict_vgg16(file_sunflower)
