@@ -1,0 +1,2 @@
+lables = {0: '1x4LBlack', 1: '1x4LRed', 2: '3x5LBlack', 3: '3x5LGray', 4: '3x5LGreen', 5: '3x5LRed', 6: 'Gear20Beige', 7: 'Pin3Blue', 8: 'PinBlack', 9: 'daisy', 10: 'dandelion', 11: 'roses', 12: 'sunflowers', 13: 'tulips'}
+print(lables[2])
