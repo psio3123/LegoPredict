@@ -2,6 +2,7 @@
 
 import keras
 import numpy as np
+import json
 
 from keras.applications import inception_v3
 from keras.models import load_model
@@ -17,6 +18,11 @@ from keras.preprocessing.image import ImageDataGenerator, load_img
 
 inception_model = inception_v3.InceptionV3(weights="imagenet")
 
+
+def jsonKeys2int(x):
+    if isinstance(x, dict):
+        return {int(k): v for k, v in x.items()}
+    return x
 
 def show_results():
     # Show the results
@@ -148,16 +154,25 @@ def mobilenet():
     print("")
     print("My Model  - 1x4LRed ")
     predict_mymodel(file_1x4LRed)
+
     print("")
-    print("My Model  - Rose ")
-    predict_mymodel(file_rose)
+    print("Gear Webcam Cropped ")
+    predict_mymodel(file_GearW)
+
     print("")
-    print("")
-    print("Inception - Apple ")
-    predict_mymodel(file_apple)
-    print("")
-    print("Inception - Sunflower")
-    predict_mymodel(file_sunflower)
+    print("3x5LOrange Webcam Cropped ")
+    predict_mymodel(file_3x5LGreenW)
+
+    #print("")
+    #print("My Model  - Rose ")
+    #predict_mymodel(file_rose)
+    #print("")
+    #print("")
+    #print("Inception - Apple ")
+    #predict_mymodel(file_apple)
+    #print("")
+    #print("Inception - Sunflower")
+    #predict_mymodel(file_sunflower)
 
 
 def vgg16():
@@ -171,15 +186,25 @@ def vgg16():
     print("1x4LRed ")
     predict_vgg16(file_1x4LRed)
     print("")
-    print("Rose")
-    predict_vgg16(file_rose)
+    print("Gear Webcam Cropped ")
+    predict_vgg16(file_GearW)
+
     print("")
-    print("")
-    print("Apple ")
-    predict_vgg16(file_apple)
-    print("")
-    print("Sunflower")
-    predict_vgg16(file_sunflower)
+    print("3x5LOrange Webcam Cropped ")
+    predict_vgg16(file_3x5LGreenW)
+
+
+
+
+    #print("Rose")
+    #predict_vgg16(file_rose)
+    #print("")
+    #print("")
+    #print("Apple ")
+    #predict_vgg16(file_apple)
+    #print("")
+    #print("Sunflower")
+    #predict_vgg16(file_sunflower)
 
 
 
@@ -194,19 +219,24 @@ def resnet50():
 
 if __name__ == '__main__':
     start = time.time()
-    labels = {0: '1x4LBlack', 1: '1x4LRed', 2: '3x5LBlack', 3: '3x5LGray', 4: '3x5LGreen', 5: '3x5LRed', 6: 'Gear20Beige', 7: 'Pin3Blue', 8: 'PinBlack', 9: 'daisy', 10: 'dandelion', 11: 'roses', 12: 'sunflowers', 13: 'tulips'}
+    labels_file = "./models/labels_8classes.json"
+    with open(labels_file) as f:
+        labels = json.load(f, object_hook=jsonKeys2int)
+    print(labels)
+
     print("reading model...")
 
-    mobilenet_model = load_model('./models/LegoTrainedMobilenet.h5')
-    vgg16_model = load_model('./models/LegoTrainedVGG16_epochs10.h5')
+    mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20.h5')
+    vgg16_model = load_model('./models/LegoTrainedVGG16_classes8_epochs10.h5')
     #resnet50_model = load_model('./models/resnet50_lego_01.h5')
 
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
 
-    file_3x5LGreen = "./lego_fotos/validation/3x5LGreen/frame20190204-164214788.jpg"
-
-    file_1x4LRed = "./lego_fotos/validation/1x4LRed/frame20190204-16420410.jpg"
+    file_3x5LGreen = "./lego_fotos/predict/3x5LGreen/frame20190215-2217332.jpg"
+    file_3x5LGreenW = "./lego_fotos/predict/3x5OrangeWebcamCropped.jpg"
+    file_GearW = "./lego_fotos/predict/GearWebcamCropped.jpg"
+    file_1x4LRed = "./lego_fotos/train/1x4LRed/frame20190204-1648069.jpg"
 
     file_rose = "./lego_fotos/predict/rose.jpg"
     file_sunflower = "./lego_fotos/predict/sunflower.jpg"
