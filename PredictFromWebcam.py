@@ -96,7 +96,7 @@ def extractFrames(  ):
         cv2.imshow('Detection Aera', croppend_image)
         cv2.imshow('WebCam', frame)
         predict_vgg16_CV2(frame)
-        #predict_mobilenet(croppend_image)
+        predict_mobilenet(croppend_image)
         #predict_inception_v3(croppend_image)
 
         key = cv2.waitKey(1)
@@ -111,15 +111,15 @@ def extractFrames(  ):
 if __name__ == '__main__':
     start = time.time()
     # load labels
-    labels_file = "./models/labels_8classes.json"
+    labels_file = "./models/labels_classes5.json"
     with open(labels_file) as f:
         labels = json.load(f, object_hook=jsonKeys2int)
     print(labels)
 
     print("reading model...")
 
-    #mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20.h5')
-    vgg16_model = load_model('./models/LegoTrainedVGG16_classes8_epochs10.h5')
+    mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
+    vgg16_model = load_model('./models/LegoTrainedVGG16_classes5_epochs10.h5')
 
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
