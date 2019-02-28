@@ -47,6 +47,24 @@ def predict_inception_v3(input):
     print('{:5.3f}s'.format(ende - start))
 
 
+def predict_inceptionv3(input):
+    # Convert the captured frame into RGB
+    im = Image.fromarray(input, 'RGB')
+
+    # Resizing into 224x224 because we trained the model with this image size.
+    im = im.resize((150, 150))
+    img_array = np.array(im)
+    img_tensor = np.expand_dims(img_array,axis=0)  # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
+    #img_tensor /= 255.  # imshow expects values in the range [0, 1]
+
+    start = time.time()
+    predictions_my = inceptionv3_model.predict(img_tensor)
+
+    ende = time.time()
+    y_classes = predictions_my.argmax(axis=-1)
+    print('InceptionV3:', labels[y_classes[0]], predictions_my[0, y_classes[0]], '{:5.3f}s'.format(ende - start))
+
+
 def predict_mobilenet(input):
     # Convert the captured frame into RGB
     im = Image.fromarray(input, 'RGB')
@@ -91,17 +109,23 @@ def extractFrames(  ):
         # Capture frame-by-frame
         ret, frame = cap.read()
 
-        croppend_image = frame[100:324, 200:424].copy()
+        cropped_image = frame[150:274, 250:374].copy()
         cv2.rectangle(frame, (200, 100), (424, 324), (0, 255, 255), 2)
-        cv2.imshow('Detection Aera', croppend_image)
+        cv2.imshow('Detection Aera', cropped_image)
         cv2.imshow('WebCam', frame)
         predict_vgg16_CV2(frame)
-        predict_mobilenet(croppend_image)
-        #predict_inception_v3(croppend_image)
+        #predict_mobilenet(cropped_image)
+        #predict_inceptionv3(cropped_image)
 
         key = cv2.waitKey(1)
-        if key & 0xFF == ord('s'):   # s = save image and boxes to annotation file
-            print('Read %d frame:')
+        if key & 0xFF == ord('s'):   # s = save image
+            img_path = os.path.join('./lego_fotos/webcam/', "webcam{:s}.jpg".format(str(time.strftime('%Y%m%d-%H%M%S'))))
+            cv2.imwrite(img_path, frame)  # save frame
+
+        if key & 0xFF == ord('c'):   # s = save cropped image
+            img_path = os.path.join('./lego_fotos/webcam/', "webcam_cropped{:s}.jpg".format(str(time.strftime('%Y%m%d-%H%M%S'))))
+            cv2.imwrite(img_path, cropped_image)  # save frame
+
         if key & 0xFF == ord('q'):
             break
 
@@ -118,8 +142,9 @@ if __name__ == '__main__':
 
     print("reading model...")
 
-    mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
+    #mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
     vgg16_model = load_model('./models/LegoTrainedVGG16_classes5_epochs10.h5')
+    #inceptionv3_model = load_model('./models/LegoTrainedInceptionV3_classes5_best_model.h5')
 
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))

@@ -227,25 +227,16 @@ if __name__ == '__main__':
     print("reading model...")
 
     mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20.h5')
-    vgg16_model = load_model('./models/LegoTrainedVGG16_classes8_epochs10.h5')
-    #resnet50_model = load_model('./models/resnet50_lego_01.h5')
+    vgg16_model = load_model('./models/LegoTrainedVGG16_classes5_best_model.h5')
+
 
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
 
     file_3x5LGreen = "./lego_fotos/predict/3x5LGreen/frame20190215-2217332.jpg"
     file_3x5LGreenW = "./lego_fotos/predict/3x5OrangeWebcamCropped.jpg"
-    file_GearW = "./lego_fotos/predict/GearWebcamCropped.jpg"
-    file_1x4LRed = "./lego_fotos/train/1x4LRed/frame20190204-1648069.jpg"
-
-    file_rose = "./lego_fotos/predict/rose.jpg"
-    file_sunflower = "./lego_fotos/predict/sunflower.jpg"
-
-    file_car = "./lego_fotos/predict/cat+people.jpg"
-
-    file_apple = "./lego_fotos/predict/apple.jpg"
-
-    file_daisy = "./lego_fotos/train/daisy/1031799732_e7f4008c03.jpg"
+    file_GearW = "./lego_fotos/predict/Gear20Beige/webcam_cropped20190227-224240.jpg"
+    file_1x4LRed = "./lego_fotos/predict/3x5LRed/frame20190222-16260317.jpg"
 
     mobilenet()
     vgg16()
