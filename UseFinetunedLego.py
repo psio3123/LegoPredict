@@ -159,10 +159,6 @@ def mobilenet():
     print("Gear Webcam Cropped ")
     predict_mymodel(file_GearW)
 
-    print("")
-    print("3x5LOrange Webcam Cropped ")
-    predict_mymodel(file_3x5LGreenW)
-
     #print("")
     #print("My Model  - Rose ")
     #predict_mymodel(file_rose)
@@ -189,9 +185,6 @@ def vgg16():
     print("Gear Webcam Cropped ")
     predict_vgg16(file_GearW)
 
-    print("")
-    print("3x5LOrange Webcam Cropped ")
-    predict_vgg16(file_3x5LGreenW)
 
 
 
@@ -234,7 +227,6 @@ if __name__ == '__main__':
     print('{:5.3f}s'.format(ende - start))
 
     file_3x5LGreen = "./lego_fotos/predict/3x5LGreen/frame20190215-2217332.jpg"
-    file_3x5LGreenW = "./lego_fotos/predict/3x5OrangeWebcamCropped.jpg"
     file_GearW = "./lego_fotos/predict/Gear20Beige/webcam_cropped20190227-224240.jpg"
     file_1x4LRed = "./lego_fotos/predict/3x5LRed/frame20190222-16260317.jpg"
 
