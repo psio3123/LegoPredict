@@ -83,7 +83,7 @@ def predict_mobilenet(input):
     print('Mobilnet:', labels[y_classes[0]], predictions_my[0, y_classes[0]], '{:5.3f}s'.format(ende - start))
 
 
-def predict_vgg16_CV2(input):
+def predict(input,model):
     # Convert the captured frame into RGB
     im = Image.fromarray(input, 'RGB')
 
@@ -96,12 +96,12 @@ def predict_vgg16_CV2(input):
     img_tensor = np.expand_dims(img_array, axis=0) # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
 
     start = time.time()
-    predictions_my = vgg16_model.predict(img_tensor)
+    predictions_my = model.predict(img_tensor)
     ende = time.time()
     y_classes = predictions_my.argmax(axis=-1)
     print('VGG16  :', y_classes[0], labels[y_classes[0]],predictions_my[0,y_classes[0]],'{:5.3f}s'.format(ende - start))
 
-def extractFrames(  ):
+def extractFrames( model ):
 
     cap = cv2.VideoCapture(0)
     count = 0
@@ -109,11 +109,11 @@ def extractFrames(  ):
         # Capture frame-by-frame
         ret, frame = cap.read()
 
-        cropped_image = frame[150:274, 250:374].copy()
+        cropped_image = frame[100:324, 200:424].copy()
         cv2.rectangle(frame, (200, 100), (424, 324), (0, 255, 255), 2)
         cv2.imshow('Detection Aera', cropped_image)
         cv2.imshow('WebCam', frame)
-        predict_vgg16_CV2(frame)
+        predict(frame,model)
         #predict_mobilenet(cropped_image)
         #predict_inceptionv3(cropped_image)
 
@@ -135,20 +135,20 @@ def extractFrames(  ):
 if __name__ == '__main__':
     start = time.time()
     # load labels
-    labels_file = "./models/labels_classes5.json"
+    labels_file = "./models/labels_classes6.json"
     with open(labels_file) as f:
         labels = json.load(f, object_hook=jsonKeys2int)
     print(labels)
 
     print("reading model...")
 
-    #mobilenet_model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
-    vgg16_model = load_model('./models/LegoTrainedVGG16_classes5_epochs10.h5')
-    #inceptionv3_model = load_model('./models/LegoTrainedInceptionV3_classes5_best_model.h5')
+    #model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
+    model = load_model('./models/LegoTrainedVGG16_classes6_best_model.h5')
+    #model = load_model('./models/LegoTrainedInceptionV3_classes5_best_model.h5')
 
     ende = time.time()
     print('{:5.3f}s'.format(ende - start))
-    extractFrames()
+    extractFrames( model )
 
 
 

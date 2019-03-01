@@ -48,13 +48,13 @@ def predict_mymodel(img_path, model):
 
 
 if __name__ == '__main__':
-    labels_file = "./snapshots/labels_classes6.json"
+    labels_file = "./models/labels_classes6.json"
     with open(labels_file) as f:
         labels = json.load(f, object_hook=jsonKeys2int)
     print(labels)
 
     print("reading model...")
-    model = load_model('./snapshots/LegoTrainedVGG16_classes6_epochs_70.h5')
+    model = load_model('./models/LegoTrainedVGG16_classes6_best_model.h5')
 
     images = get_filenames(root)
 

@@ -6,10 +6,10 @@ from keras.models import load_model
 import os
 import time
 
-inceptionv3_model = load_model('./models/LegoTrainedInceptionV3_classes5_best_model.h5')
+model = load_model('./models/LegoTrainedVGG16_classes6_best_model.h5')
 
-validation_dir = './lego_fotos/predict'
-image_size = 150
+validation_dir = './lego_fotos/predict2'
+image_size = 224
 
 
 validation_datagen = ImageDataGenerator(rescale=1./255)
@@ -40,7 +40,7 @@ label2index = validation_generator.class_indices
 idx2label = dict((v, k) for k, v in label2index.items())
 
 # Get the predictions from the model using the generator
-predictions = inceptionv3_model.predict_generator(validation_generator,
+predictions = model.predict_generator(validation_generator,
                                       steps=validation_generator.samples / validation_generator.batch_size, verbose=1)
 predicted_classes = np.argmax(predictions, axis=1)
 
