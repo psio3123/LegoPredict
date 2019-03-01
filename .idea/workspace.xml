@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="215b3cab-9496-472a-8466-37edc0aea880" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="215b3cab-9496-472a-8466-37edc0aea880" name="Default" comment="New Belt Parts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PredictBatch.py" beforeDir="false" afterPath="$PROJECT_DIR$/PredictBatch.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PredictFromFolder.py" beforeDir="false" afterPath="$PROJECT_DIR$/PredictFromFolder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PredictFromWebcam.py" beforeDir="false" afterPath="$PROJECT_DIR$/PredictFromWebcam.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/snapshots/labels_classes6.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/labels_classes6.json" afterDir="false" />
     </list>
     <list id="1aa78723-21ef-456b-b857-dbbab77aa8ee" name="New changelist" comment="New changelist" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,44 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/PredictFromWebcam.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="97" column="23" lean-forward="true" selection-start-line="97" selection-start-column="23" selection-end-line="97" selection-end-column="23" />
-              <folding>
-                <element signature="e#58#70#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PredictFromFolder.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PredictBatch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="42" column="14" selection-start-line="42" selection-start-column="14" selection-end-line="42" selection-end-column="14" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -88,6 +47,7 @@
         <option value="$PROJECT_DIR$/PredictBatch.py" />
         <option value="$PROJECT_DIR$/PredictFromWebcam.py" />
         <option value="$PROJECT_DIR$/PredictFromFolder.py" />
+        <option value="$PROJECT_DIR$/showModelOutput.py" />
       </list>
     </option>
   </component>
@@ -190,11 +150,6 @@
               <item name="LegoPredict" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
-            <path>
-              <item name="LegoPredict" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="lego_fotos" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -222,7 +177,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PredictFromFolder">
+  <component name="RunManager" selected="Python.showModelOutput">
     <configuration name="PredictBatch" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="LegoPredict" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -244,7 +199,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="PredictFromFolder" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="PredictFromFolder" type="PythonConfigurationType" factoryName="Python">
       <module name="LegoPredict" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -328,16 +283,38 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="showModelOutput" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="LegoPredict" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/showModelOutput.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Python.PredictFromFolder" />
       <item itemvalue="Python.openfiledialog" />
       <item itemvalue="Python.UseFinetunedLego" />
-      <item itemvalue="Python.PredictFromFolder" />
       <item itemvalue="Python.PredictFromWebcam" />
       <item itemvalue="Python.PredictBatch" />
+      <item itemvalue="Python.showModelOutput" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.PredictFromFolder" />
+        <item itemvalue="Python.showModelOutput" />
         <item itemvalue="Python.PredictFromWebcam" />
         <item itemvalue="Python.PredictBatch" />
         <item itemvalue="Python.UseFinetunedLego" />
@@ -434,26 +411,32 @@
       <option name="project" value="LOCAL" />
       <updated>1551360778910</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="New Belt Parts">
+      <created>1551445354916</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1551445354916</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" x="60" y="118" width="436" height="997" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.296875" />
       <window_info auto_hide="true" id="Structure" order="1" sideWeight="0.50084317" side_tool="true" weight="0.24853516" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" weight="0.29787233" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.29787233" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49925596" weight="0.23731588" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49925596" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50074404" side_tool="true" visible="true" weight="0.29787233" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49776787" weight="0.0801964" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.50223213" side_tool="true" weight="0.2831424" />
       <window_info anchor="bottom" id="Messages" order="10" />
       <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49925596" weight="0.3289689" />
       <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32998997" />
@@ -621,16 +604,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PredictFromFolder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="56" column="48" selection-start-line="56" selection-start-column="48" selection-end-line="56" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PredictFromWebcam.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
@@ -638,6 +611,26 @@
           <folding>
             <element signature="e#58#70#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lego_fotos/unsorted/cat+people.jpg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/showModelOutput.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="20" column="32" lean-forward="true" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PredictFromFolder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
         </state>
       </provider>
     </entry>

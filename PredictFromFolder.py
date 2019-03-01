@@ -54,7 +54,7 @@ if __name__ == '__main__':
     print(labels)
 
     print("reading model...")
-    model = load_model('./models/LegoTrainedVGG16_classes6_best_model.h5')
+    model = load_model('./models/LegoTrainedVGG16_alllayer_classes6_best_model.h5')
 
     images = get_filenames(root)
 
