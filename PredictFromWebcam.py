@@ -135,7 +135,7 @@ def extractFrames( model ):
 if __name__ == '__main__':
     start = time.time()
     # load labels
-    labels_file = "./models/labels_classes6.json"
+    labels_file = "./models/labels_classes11.json"
     with open(labels_file) as f:
         labels = json.load(f, object_hook=jsonKeys2int)
     print(labels)
@@ -143,7 +143,7 @@ if __name__ == '__main__':
     print("reading model...")
 
     #model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
-    model = load_model('./models/LegoTrainedVGG16_classes6_best_model.h5')
+    model = load_model('./models/LegoTrainedVGG16_15Layer_classes6_best_model.h5')
     #model = load_model('./models/LegoTrainedInceptionV3_classes5_best_model.h5')
 
     ende = time.time()

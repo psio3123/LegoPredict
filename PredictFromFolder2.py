@@ -56,12 +56,15 @@ if __name__ == '__main__':
     print("reading model...")
     model = load_model('./models/LegoTrainedVGG16_15Layer_classes6_best_model.h5')
 
-    images = get_filenames(root)
-
-    for image_path in images:
-        print("Image", image)
-        predict_mymodel(image_path, model)
-
+    while (True):
+        images = get_filenames(root)
+    
+        for image_path in images:
+            print("Image", image)
+            predict_mymodel(image_path, model)
+        key = cv2.waitKey(1)
+        if key & 0xFF == ord('q'):
+            break
 
 
 
