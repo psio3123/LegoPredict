@@ -82,8 +82,8 @@ class MainGUI:
         # initialize annotation file
         #self.anno_filename = 'annotations.csv'
         #self.annotation_file = open('annotations/' + self.anno_filename, 'w+')
-        self.annotation_file.write("")
-        self.annotation_file.close()
+        #self.annotation_file.write("")
+        #self.annotation_file.close()
 
         # ------------------ GUI ---------------------
 
