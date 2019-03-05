@@ -11,7 +11,6 @@ Copyright {2018} {Viraj Mavani}
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
-import BusyBar
 
 import keras
 import time
@@ -180,8 +179,6 @@ class MainGUI:
         self.load_model()
         self.imageDir = self.settings["image_dir"]
 
-        self.open_image_dir()
-
     def predict_webcam(self, input, model):
         # Convert the captured frame into RGB
         im = Image.fromarray(input, 'RGB')
@@ -219,7 +216,6 @@ class MainGUI:
         self.save_settings()
         self.load_model()
 
-
     def open_image_dir(self):
         self.imageDir = filedialog.askdirectory(title="Select Dataset Directory")
         if not self.imageDir:
@@ -234,8 +230,6 @@ class MainGUI:
 
         self.settings["image_dir"] = self.imageDir
         self.save_settings()
-
-        self.automate2()
 
     def load_image(self, file):
         self.img_path = file
