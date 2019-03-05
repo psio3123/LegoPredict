@@ -1,0 +1,6 @@
+{
+    "image_dir": "C:/Users/Jogi/PycharmProjects/LegoPredict/lego_fotos/collection",
+    "labels_file": "./models/labels_classes6.json",
+    "model": "ResNet50",
+    "model_file": "C:/Users/Jogi/PycharmProjects/LegoPredict/models/LegoTrainedVGG16_15Layer_classes6_best_model.h5"
+}

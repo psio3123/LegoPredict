@@ -83,6 +83,20 @@ def predict_mobilenet(input):
     print('Mobilnet:', labels[y_classes[0]], predictions_my[0, y_classes[0]], '{:5.3f}s'.format(ende - start))
 
 
+def predict_new(file,model):
+    img = image.load_img(file, target_size=(224, 224))
+    img_tensor = image.img_to_array(img)  # (height, width, channels)
+    img_tensor = np.expand_dims(img_tensor,
+                                axis=0)  # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
+    img_tensor /= 255.  # imshow expects values in the range [0, 1]
+
+    start = time.time()
+    predictions_my = model.predict(img_tensor)
+    ende = time.time()
+    y_classes = predictions_my.argmax(axis=-1)
+    print('Best Match', labels[y_classes[0]], predictions_my[0, y_classes[0]], '{:5.3f}s'.format(ende - start))
+
+
 def predict(input,model):
     # Convert the captured frame into RGB
     im = Image.fromarray(input, 'RGB')
@@ -99,7 +113,7 @@ def predict(input,model):
     predictions_my = model.predict(img_tensor)
     ende = time.time()
     y_classes = predictions_my.argmax(axis=-1)
-    print('VGG16  :', y_classes[0], labels[y_classes[0]],predictions_my[0,y_classes[0]],'{:5.3f}s'.format(ende - start))
+    print('Best match  :', y_classes[0], labels[y_classes[0]],predictions_my[0,y_classes[0]],'{:5.3f}s'.format(ende - start))
 
 def extractFrames( model ):
 
@@ -113,7 +127,12 @@ def extractFrames( model ):
         cv2.rectangle(frame, (200, 100), (424, 324), (0, 255, 255), 2)
         cv2.imshow('Detection Aera', cropped_image)
         cv2.imshow('WebCam', frame)
-        predict(frame,model)
+
+        img_path = os.path.join('./lego_fotos/webcam/', "webcam_cropped.jpg")
+        cv2.imwrite(img_path, cropped_image)  # save frame
+        predict_new(img_path, model)
+
+        #predict(cropped_image,model)
         #predict_mobilenet(cropped_image)
         #predict_inceptionv3(cropped_image)
 
@@ -135,7 +154,7 @@ def extractFrames( model ):
 if __name__ == '__main__':
     start = time.time()
     # load labels
-    labels_file = "./models/labels_classes11.json"
+    labels_file = "./models/labels_classes6.json"
     with open(labels_file) as f:
         labels = json.load(f, object_hook=jsonKeys2int)
     print(labels)
@@ -143,7 +162,9 @@ if __name__ == '__main__':
     print("reading model...")
 
     #model = load_model('./models/LegoTrainedMobileNet_epochs20_classes5.h5')
-    model = load_model('./models/LegoTrainedVGG16_15Layer_classes6_best_model.h5')
+    #model = load_model('./models/LegoTrainedVGG16_15Layer_classes6_best_model.h5')
+    model = load_model('./models/LegoTrainedResnet50_15Layer_classes6_best_model.h5')
+
     #model = load_model('./models/LegoTrainedInceptionV3_classes5_best_model.h5')
 
     ende = time.time()

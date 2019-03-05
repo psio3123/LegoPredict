@@ -11,6 +11,7 @@ Copyright {2018} {Viraj Mavani}
 from tkinter import *
 from tkinter import filedialog
 from PIL import Image, ImageTk
+import BusyBar
 
 import keras
 import time
@@ -30,7 +31,7 @@ import math
 
 
 
-model = load_model('./models/LegoTrainedVGG16_alllayer_classes6_best_model.h5')
+
 
 
 class MainGUI:
@@ -45,8 +46,11 @@ class MainGUI:
         self.img_path = None
         self.img = None
         self.tkimg = None
+        self.model = None
         self.imageDir = ''
         self.imageDirPathBuffer = ''
+        self.settings_file = 'settings.json'
+        self.settings = []
         self.imageList = []
         self.imageTotal = 0
         self.imageCur = 0
@@ -85,14 +89,17 @@ class MainGUI:
         #self.annotation_file.write("")
         #self.annotation_file.close()
 
+        self.load_settings()
+
+
         # ------------------ GUI ---------------------
 
         # Control Panel
         self.ctrlPanel = Frame(self.frame)
         self.ctrlPanel.grid(row=0, column=0, sticky=W + N)
-        self.openBtn = Button(self.ctrlPanel, text='Open', command=self.open_image)
+        self.openBtn = Button(self.ctrlPanel, text='Load Model', command=self.change_model)
         self.openBtn.pack(fill=X, side=TOP)
-        self.openDirBtn = Button(self.ctrlPanel, text='Open Dir', command=self.open_image_dir)
+        self.openDirBtn = Button(self.ctrlPanel, text='Open Image Dir', command=self.open_image_dir)
         self.openDirBtn.pack(fill=X, side=TOP)
         self.nextBtn = Button(self.ctrlPanel, text='Next -->', command=self.open_next)
         self.nextBtn.pack(fill=X, side=TOP)
@@ -143,17 +150,57 @@ class MainGUI:
         self.labelListBox = Listbox(self.listPanel)
         self.labelListBox.pack(fill=X, side=TOP)
 
-        self.cocoLabels = config.labels_to_names.values()
+        #self.cocoLabels = config.labels_to_names.values()
         self.cocoIntVars = []
 
 
         # STATUS BAR
         self.statusBar = Frame(self.frame, width=500)
         self.statusBar.grid(row=1, column=1, sticky=W + N)
-        self.processingLabel = Label(self.statusBar, text="                      ")
+        self.processingLabel = Label(self.statusBar, text=self.settings["model_file"])
         self.processingLabel.pack(side="left", fill=X)
         self.imageIdxLabel = Label(self.statusBar, text="                      ")
         self.imageIdxLabel.pack(side="right", fill=X)
+
+    def load_model(self):
+        file = self.settings["model_file"]
+        print("loading model", file)
+        self.model = load_model(file)
+        self.parent.title(file)
+
+
+    def save_settings(self):
+        with open(self.settings_file, 'w') as f:
+            json.dump(self.settings, f, sort_keys=True, indent=4, ensure_ascii=False)
+
+    def load_settings(self):
+        with open(self.settings_file) as f:
+            self.settings = json.load(f)
+
+        self.load_model()
+        self.imageDir = self.settings["image_dir"]
+
+        self.open_image_dir()
+
+    def predict_webcam(self, input, model):
+        # Convert the captured frame into RGB
+        im = Image.fromarray(input, 'RGB')
+
+        # Resizing into 224x224 because we trained the model with this image size.
+        im = im.resize((224, 224))
+        img_array = np.array(im)
+
+        # Our keras model used a 4D tensor, (images x height x width x channel)
+        # So changing dimension 128x128x3 into 1x128x128x3
+        img_tensor = np.expand_dims(img_array,
+                                    axis=0)  # (1, height, width, channels), add a dimension because the model expects this shape: (batch_size, height, width, channels)
+
+        start = time.time()
+        predictions_my = model.predict(img_tensor)
+        ende = time.time()
+        y_classes = predictions_my.argmax(axis=-1)
+        print('VGG16  :', y_classes[0], labels[y_classes[0]], predictions_my[0, y_classes[0]],
+              '{:5.3f}s'.format(ende - start))
 
     def open_image(self):
         self.filename = filedialog.askopenfilename(title="Select Image", filetypes=(("jpeg files", "*.jpg"),
@@ -163,22 +210,38 @@ class MainGUI:
         self.filenameBuffer = self.filename
         self.load_image(self.filenameBuffer)
 
+    def change_model(self):
+        self.filename = filedialog.askopenfilename(title="Select Model File", filetypes=(("h5", "*.h5"),
+                                                                                    ("all files", "*.*")))
+        if not self.filename:
+            return None
+        self.settings["model_file"] = self.filename
+        self.save_settings()
+        self.load_model()
+
+
     def open_image_dir(self):
         self.imageDir = filedialog.askdirectory(title="Select Dataset Directory")
         if not self.imageDir:
             return None
         self.imageList = os.listdir(self.imageDir)
+
         self.imageList = sorted(self.imageList)
         self.imageTotal = len(self.imageList)
         self.filename = None
         self.imageDirPathBuffer = self.imageDir
         self.load_image(self.imageDirPathBuffer + '/' + self.imageList[self.cur])
 
+        self.settings["image_dir"] = self.imageDir
+        self.save_settings()
+
+        self.automate2()
+
     def load_image(self, file):
         self.img_path = file
         self.img = Image.open(file)
         self.imageCur = self.cur + 1
-        self.imageIdxLabel.config(text='  ||   Image Number: %d / %d' % (self.imageCur, self.imageTotal))
+        self.imageIdxLabel.config(text='  ||   Image: %s' % ( file))
         # Resize to Pascal VOC format
         w, h = self.img.size
         if w >= h:
@@ -208,6 +271,7 @@ class MainGUI:
             self.load_image(self.imageDirPathBuffer + '/' + self.imageList[self.cur])
         self.processingLabel.config(text="                      ")
         self.processingLabel.update_idletasks()
+        self.automate2()
 
     def open_previous(self, event=None):
         self.save()
@@ -216,24 +280,25 @@ class MainGUI:
             self.load_image(self.imageDirPathBuffer + '/' + self.imageList[self.cur])
         self.processingLabel.config(text="                      ")
         self.processingLabel.update_idletasks()
+        self.automate2()
 
     def save(self):
 
-        print("Boxes:", self.bboxList )
-        if self.filenameBuffer is None:
-            self.annotation_file = open('annotations/' + self.anno_filename, 'a')
-            for idx, item in enumerate(self.bboxList):
-                self.annotation_file.write(self.imageDirPathBuffer + '/' + self.imageList[self.cur] + ',' +
-                                           ','.join(map(str, self.bboxList[idx])) + ',' + str(self.objectLabelList[idx])
-                                           + '\n')
-            self.annotation_file.close()
-        else:
-            self.annotation_file = open('annotations/' + self.anno_filename, 'a')
-            for idx, item in enumerate(self.bboxList):
-                self.annotation_file.write(self.filenameBuffer + ',' + ','.join(map(str, self.bboxList[idx])) + ','
-                                           + str(self.objectLabelList[idx]) + '\n')
-            self.annotation_file.close()
-
+        #print("Boxes:", self.bboxList )
+        #if self.filenameBuffer is None:
+        #    self.annotation_file = open('annotations/' + self.anno_filename, 'a')
+        #    for idx, item in enumerate(self.bboxList):
+        #        self.annotation_file.write(self.imageDirPathBuffer + '/' + self.imageList[self.cur] + ',' +
+        #                                   ','.join(map(str, self.bboxList[idx])) + ',' + str(self.objectLabelList[idx])
+        #                                   + '\n')
+        #    self.annotation_file.close()
+        #else:
+        #    self.annotation_file = open('annotations/' + self.anno_filename, 'a')
+        #    for idx, item in enumerate(self.bboxList):
+        #        self.annotation_file.write(self.filenameBuffer + ',' + ','.join(map(str, self.bboxList[idx])) + ','
+        #                                   + str(self.objectLabelList[idx]) + '\n')
+        #    self.annotation_file.close()
+        print("Save")
     def mouse_click(self, event):
         # Check if Updating BBox
         if self.canvas.find_enclosed(event.x - 5, event.y - 5, event.x + 5, event.y + 5):
@@ -427,7 +492,7 @@ class MainGUI:
 
 
         start = time.time()
-        predictions_my = model.predict(img_tensor)
+        predictions_my = self.model.predict(img_tensor)
         ende = time.time()
         y_classes = predictions_my.argmax(axis=-1)
         print('Best Match', labels[y_classes[0]], predictions_my[0, y_classes[0]], '{:5.3f}s'.format(ende - start))
