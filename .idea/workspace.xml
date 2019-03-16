@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="215b3cab-9496-472a-8466-37edc0aea880" name="Default" comment="TK GUI">
-      <change afterPath="$PROJECT_DIR$/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/settings_dialog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Predict.py" beforeDir="false" afterPath="$PROJECT_DIR$/Predict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PredictFromWebcam.py" beforeDir="false" afterPath="$PROJECT_DIR$/PredictFromWebcam.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PredictFromFolder2.py" beforeDir="false" afterPath="$PROJECT_DIR$/PredictFromFolder2.py" afterDir="false" />
     </list>
     <list id="1aa78723-21ef-456b-b857-dbbab77aa8ee" name="New changelist" comment="New changelist" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,46 +15,23 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PredictFromWebcam.py">
+        <entry file="file://$PROJECT_DIR$/PredictFromFolder2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="163" column="25" lean-forward="true" selection-start-line="163" selection-start-column="25" selection-end-line="163" selection-end-column="75" />
+            <state relative-caret-position="203">
+              <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
               <folding>
-                <element signature="e#58#70#0" expanded="true" />
+                <element signature="e#0#9#0" expanded="true" />
+                <element signature="e#570#655#0" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="1" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Predict.py">
+        <entry file="file://D:/Jochen/Projekte/tensorflow/transfer2/venv/Lib/site-packages/keras/preprocessing/image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
-              <folding>
-                <element signature="e#271#292#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/settings_dialog.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="12" selection-start-line="12" selection-end-line="15" selection-end-column="37" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="119">
+              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -80,6 +54,9 @@
       <find>load_mode</find>
       <find>openBtn</find>
       <find>semi</find>
+      <find>datase</find>
+      <find>open_image_dir</find>
+      <find>automate2</find>
     </findStrings>
     <replaceStrings>
       <replace>InceptionV3</replace>
@@ -100,11 +77,11 @@
         <option value="$PROJECT_DIR$/PredictBatch.py" />
         <option value="$PROJECT_DIR$/showModelOutput.py" />
         <option value="$PROJECT_DIR$/PredictFromFolder.py" />
-        <option value="$PROJECT_DIR$/PredictFromFolder2.py" />
         <option value="$PROJECT_DIR$/PredictFromWebcam.py" />
         <option value="$PROJECT_DIR$/settings_dialog.py" />
         <option value="$PROJECT_DIR$/settings.json" />
         <option value="$PROJECT_DIR$/Predict.py" />
+        <option value="$PROJECT_DIR$/PredictFromFolder2.py" />
       </list>
     </option>
   </component>
@@ -126,26 +103,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="LegoPredict" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PredictFromFolder.py" type="8704e2dd:PyFileNode" />
-            </path>
-            <path>
-              <item name="LegoPredict" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PredictFromWebcam.py" type="8704e2dd:PyFileNode" />
-            </path>
-            <path>
-              <item name="LegoPredict" type="b2602c69:ProjectViewProjectNode" />
-              <item name="UseFinetunedLego.py" type="8704e2dd:PyFileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-        <option name="use-file-nesting-rules" value="false" />
-      </pane>
       <pane id="Scope">
         <subPane subId="Changed Files">
           <expand>
@@ -207,14 +164,29 @@
               <item name="LegoPredict" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
             <path>
-              <item name="LegoPredict" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Predict.py" type="8704e2dd:PyFileNode" />
+              <item name="LegoPredict" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PredictFromFolder.py" type="8704e2dd:PyFileNode" />
+            </path>
+            <path>
+              <item name="LegoPredict" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PredictFromWebcam.py" type="8704e2dd:PyFileNode" />
+            </path>
+            <path>
+              <item name="LegoPredict" type="b2602c69:ProjectViewProjectNode" />
+              <item name="UseFinetunedLego.py" type="8704e2dd:PyFileNode" />
             </path>
           </expand>
           <select />
         </subPane>
+        <option name="use-file-nesting-rules" value="false" />
       </pane>
     </panes>
   </component>
@@ -509,19 +481,33 @@
       <option name="project" value="LOCAL" />
       <updated>1551681487435</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="TK GUI">
+      <created>1551782952257</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1551782952257</updated>
+    </task>
+    <task id="LOCAL-00018" summary="TK GUI">
+      <created>1551784424029</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1551784424029</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info x="60" y="118" width="436" height="997" id="Project" order="0" sideWeight="0.49915683" weight="0.22470239" />
+      <window_info active="true" x="60" y="118" width="436" height="997" id="Project" order="0" sideWeight="0.49915683" visible="true" weight="0.22470239" />
       <window_info auto_hide="true" id="Structure" order="1" sideWeight="0.50084317" side_tool="true" weight="0.24851191" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" visible="true" weight="0.38134205" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49925596" weight="0.38134205" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -701,17 +687,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PredictFromFolder2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="65" column="8" selection-start-line="65" selection-start-column="8" selection-end-line="65" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-            <element signature="e#570#655#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config.py" />
     <entry file="file://$PROJECT_DIR$/TrainMobilnet_Transfer.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -737,33 +712,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Program Files/Python36/Lib/tkinter/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="1171" column="8" selection-start-line="1171" selection-start-column="8" selection-end-line="1171" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings_dialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="12" selection-start-line="12" selection-end-line="15" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PredictFromWebcam.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="163" column="25" lean-forward="true" selection-start-line="163" selection-start-column="25" selection-end-line="163" selection-end-column="75" />
-          <folding>
-            <element signature="e#58#70#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://C:/Program Files/Python36/Lib/tkinter/__init__.py" />
     <entry file="file://$PROJECT_DIR$/settings.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -771,13 +720,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PredictFromWebcam.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="444">
+          <caret line="179" lean-forward="true" selection-start-line="179" selection-end-line="179" />
+          <folding>
+            <element signature="e#58#70#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Predict.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="170" lean-forward="true" selection-start-line="170" selection-end-line="170" />
+        <state relative-caret-position="-5115">
+          <caret line="239" column="28" lean-forward="true" selection-start-line="239" selection-start-column="28" selection-end-line="240" selection-end-column="18" />
           <folding>
             <element signature="e#271#292#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Jochen/Projekte/tensorflow/transfer2/venv/Lib/site-packages/PIL/Image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="2639" selection-start-line="2639" selection-end-line="2639" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/settings_dialog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-start-line="12" selection-end-line="15" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PredictFromFolder2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="37" column="12" selection-start-line="37" selection-start-column="12" selection-end-line="37" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#570#655#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://D:/Jochen/Projekte/tensorflow/transfer2/venv/Lib/site-packages/keras/preprocessing/image.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>

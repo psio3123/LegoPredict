@@ -53,7 +53,7 @@ if __name__ == '__main__':
         labels = json.load(f, object_hook=jsonKeys2int)
     print(labels)
 
-    print("reading model...")
+    print("loeading model...")
     model = load_model('./models/LegoTrainedVGG16_15Layer_classes6_best_model.h5')
 
     while (True):
